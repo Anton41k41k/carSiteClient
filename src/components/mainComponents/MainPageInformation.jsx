@@ -10,29 +10,6 @@ import { Link } from "react-router-dom";
 import { newItems } from "../../DATA/newItems";
 
 export default function MainPageInformaton() {
-  const json = {
-    gender: "male",
-    firstName: "Anton",
-    lastName: "Kuznetsov",
-    surname: "",
-    email: "trol-04@list.ru",
-    number: "89510693080",
-    VIN: "",
-    topic: "web",
-    message: "Куку",
-  };
-
-  async function tryFetch() {
-    console.log("Куку");
-    fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(json),
-    });
-  }
-
   return (
     <Box
       component={"section"}
@@ -221,7 +198,6 @@ export default function MainPageInformaton() {
           >
             Подробнее
           </Button>
-          <Button onClick={tryFetch}>Проверка</Button>
         </Box>
       </Box>
     </Box>
