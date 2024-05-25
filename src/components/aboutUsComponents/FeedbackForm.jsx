@@ -22,6 +22,16 @@ const topics = [
 ];
 
 export default function FeedbackForm() {
+  const handlerSubmitForm = async () => {
+    fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(state),
+    });
+  };
+
   const initUserReqest = {
     gender: "male",
     firstName: "",
@@ -111,7 +121,7 @@ export default function FeedbackForm() {
       autoComplete="off"
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(JSON.stringify(state));
+        handlerSubmitForm();
       }}
     >
       <Grid
