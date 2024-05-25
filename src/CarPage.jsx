@@ -6,7 +6,7 @@ import Design from "./components/carPageComponents/Desing";
 import { CircularProgress } from "@mui/material";
 import Features from "./components/carPageComponents/Features";
 import Characteristics from "./components/carPageComponents/Characteristics";
-import CallbackPopup from "./components/carPageComponents/CallbackPopup";
+import OrderPopup from "./components/carPageComponents/OrderPopup";
 
 export default function CarPage() {
   const { carId } = useParams();
@@ -50,7 +50,7 @@ export default function CarPage() {
       )}
       {information && <Design design={information.design} />}
       {information && (
-        <CallbackPopup
+        <OrderPopup
           make={information.make}
           model={information.model}
           total={information.total}
