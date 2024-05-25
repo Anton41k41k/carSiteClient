@@ -35,61 +35,66 @@ export default function FeedbackForm() {
   };
 
   function reducer(state, action) {
-    if (action.type === "changeGender") {
-      return {
-        ...state,
-        gender: action.gender,
-      };
+    switch (action.type) {
+      case "changeGender": {
+        return {
+          ...state,
+          gender: action.gender,
+        };
+      }
+      case "changeFirstName": {
+        return {
+          ...state,
+          firstName: action.firstName,
+        };
+      }
+      case "changeLastName": {
+        return {
+          ...state,
+          lastName: action.lastName,
+        };
+      }
+      case "changeSurname": {
+        return {
+          ...state,
+          surname: action.surname,
+        };
+      }
+      case "changeEmail": {
+        return {
+          ...state,
+          email: action.email,
+        };
+      }
+      case "changeNumber": {
+        return {
+          ...state,
+          number: action.number,
+        };
+      }
+      case "changechangeVINNumber": {
+        return {
+          ...state,
+          VIN: action.VIN,
+        };
+      }
+      case "changeTopic": {
+        return {
+          ...state,
+          topic: action.topic,
+        };
+      }
+      case "changeMessage": {
+        return {
+          ...state,
+          message: action.message,
+        };
+      }
+
+      default: {
+        throw Error("Unknown action: " + action.type);
+      }
     }
-    if (action.type === "changeFirstName") {
-      return {
-        ...state,
-        firstName: action.firstName,
-      };
-    }
-    if (action.type === "changeLastName") {
-      return {
-        ...state,
-        lastName: action.lastName,
-      };
-    }
-    if (action.type === "changeSurname") {
-      return {
-        ...state,
-        surname: action.surname,
-      };
-    }
-    if (action.type === "changeEmail") {
-      return {
-        ...state,
-        email: action.email,
-      };
-    }
-    if (action.type === "changeNumber") {
-      return {
-        ...state,
-        number: action.number,
-      };
-    }
-    if (action.type === "changeVIN") {
-      return {
-        ...state,
-        VIN: action.VIN,
-      };
-    }
-    if (action.type === "changeTopic") {
-      return {
-        ...state,
-        topic: action.topic,
-      };
-    }
-    if (action.type === "changeMessage") {
-      return {
-        ...state,
-        message: action.message,
-      };
-    }
-    throw Error("Unknown action.");
   }
 
   const [state, dispath] = useReducer(reducer, initUserReqest);
