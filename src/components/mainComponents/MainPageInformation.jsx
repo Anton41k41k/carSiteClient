@@ -12,7 +12,7 @@ import { newItems } from "../../DATA/newItems";
 export default function MainPageInformaton() {
   async function tryFetch() {
     console.log("Куку");
-    fetch("http://localhost:2402/users", {
+    fetch("https://carsiteserver.onrender.com/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
