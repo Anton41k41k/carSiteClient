@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { Autoplay, Scrollbar, FreeMode } from "swiper/modules";
+import { Autoplay, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -45,6 +45,7 @@ export default function Desing({ design }) {
           УНИКАЛЬНЫЙ ДИЗАЙН
         </Typography>
         <Swiper
+          loop={true}
           initialSlide={1}
           scrollbar={{
             hide: false,
@@ -67,14 +68,13 @@ export default function Desing({ design }) {
               spaceBetween: 10,
             },
           }}
-          modules={[Autoplay, Scrollbar, FreeMode]}
+          modules={[Autoplay, Scrollbar]}
           centeredSlides={true}
-          freeMode={true}
           spaceBetween={40}
           autoplay={{
             reverseDirection: true,
             delay: 6000,
-            disableOnInteraction: true,
+            disableOnInteraction: false,
           }}
           style={{
             padding: "1rem 1rem",
@@ -103,7 +103,7 @@ export default function Desing({ design }) {
                     maxWidth: "400px",
                   }}
                 >
-                  <img src={slide.img} alt={slide.title} loading="lazy" />
+                  <img src={slide.img} alt={slide.title} rel="preload" />
                   <Typography
                     variant="h4"
                     mt={1.5}
