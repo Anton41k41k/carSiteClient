@@ -82,7 +82,7 @@ export default function FeedbackForm() {
           number: action.number,
         };
       }
-      case "changechangeVINNumber": {
+      case "changechangeVIN": {
         return {
           ...state,
           VIN: action.VIN,
