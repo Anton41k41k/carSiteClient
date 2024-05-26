@@ -34,7 +34,7 @@ export default function Header() {
         zIndex: "7",
         backgroundColor: "rgba(0, 0, 0, 0)",
         position: `${pathname === "/" ? "absolute" : "relative"}`,
-        maxWidth: "1400px",
+        maxWidth: "93vw",
         width: "100%",
         left: "50%",
         transform: "translate(-50%, 0%)",
