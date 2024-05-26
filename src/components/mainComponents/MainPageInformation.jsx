@@ -137,6 +137,7 @@ export default function MainPageInformaton() {
         display="flex"
       >
         <img
+          rel="preload"
           loading="lazy"
           src="https://www.bmw.ru/content/dam/bmw/marketRU/bmw_ru/teaserpool/large/bmw-ix-m60-onepager-sp-desktop_1680x756_V33.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1641460066695.jpg"
           style={{
