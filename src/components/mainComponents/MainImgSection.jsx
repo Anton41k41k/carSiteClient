@@ -26,7 +26,7 @@ export default function MainImgSection({ setImageLoaded }) {
           src={
             "https://bmw.scene7.com/is/image/BMW/banner_new?wid=1920&amp;hei=1080"
           }
-          alt=""
+          alt="Автосалон БАРС"
         />
         <Box
           className="mainImageText"
