@@ -83,12 +83,7 @@ export default function MainPageInformaton() {
                       maxWidth: "400px",
                     }}
                   >
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      loading="lazy"
-                      rel="preload"
-                    />
+                    <img src={item.img} alt={item.title} rel="preload" />
                     <Typography
                       variant="h4"
                       className="newItemsInfo_title"
