@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import "./mainPage.css";
 import MainImgSection from "./components/mainComponents/MainImgSection";
 import { Suspense, lazy, useState } from "react";
@@ -12,7 +12,6 @@ export default function MainPage() {
   return (
     <Box component={"main"} className="main">
       <MainImgSection setImageLoaded={setImageLoaded} />
-      {!imageLoaded && <CircularProgress sx={{ margin: "15% 50vw" }} />}
       {imageLoaded && (
         <Suspense>
           <MainPageInformaton />
