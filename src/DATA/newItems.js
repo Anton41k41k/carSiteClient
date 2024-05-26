@@ -2,13 +2,13 @@ export const newItems = [
   {
     title: "BMW нового класса",
     text: "С середины этого десятилетия ассортимент продукции BMW Group будет сосредоточен на архитектуре автомобиля, полностью ориентированной на электропривод. Мы представим его в крупносерийном сегменте бренда BMW, в спортивном автомобиле и седане в сегменте 3-й серии.",
-    img: "https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/company/marken-geschaeftsfelder/2560x896_BMW_Group_Neue_Klasse.jpg.grp-transform/xxlarge/2560x896_BMW_Group_Neue_Klasse.jpg",
+    img: "https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/company/marken-geschaeftsfelder/2560x896_BMW_Group_Neue_Klasse.jpg.grp-transform/small/2560x896_BMW_Group_Neue_Klasse.jpg",
     id: "1",
   },
   {
     title: "Восторг электромобильности",
     text: "Совершенно новое, заряженное эмоциями удовольствие от вождения. Плавное ускорение при трогании с места. Электризующая динамика в сочетании с комфортом и спокойствием – практически бесшумное движение.",
-    img: "https://www.bmw.ru/content/dam/bmw/common/topics/fascination-bmw/electromobility2020-new/bev-new/bmw-emobility-bev-ms-electric-driving.jpg/jcr:content/renditions/cq5dam.resized.img.585.low.time1631283520128.jpg",
+    img: "https://www.bmw.ru/content/dam/bmw/common/topics/fascination-bmw/electromobility2020-new/bev-new/bmw-emobility-bev-ms-electric-car-lifestyle.jpg/jcr:content/renditions/cq5dam.resized.img.585.low.jpg",
     id: "2",
   },
   {
@@ -20,7 +20,7 @@ export const newItems = [
   {
     title: "Совершенно новый электрический G-класс",
     text: "Испытайте плавную интеграцию мощности и производительности, которая сделает ваши поездки такими же легкими, как и электрифицирующими. Благодаря оптимизированному управлению аккумулятором и оптимизированным энергетическим системам полностью электрический G-Класс всегда готов к будущему.",
-    img: "https://www.mercedes-benz.de/content/germany/de/passengercars/models/suv/n465-24-1/overview/_jcr_content/root/responsivegrid/media_slider/media_slider_item/image.component.damq6.3426579305725.jpg/mercedes-benz-g-class-n465-highlights-exterior-3302x1858-03-2024.jpg",
+    img: "https://www.mercedes-benz.de/content/germany/de/passengercars/models/suv/n465-24-1/overview/_jcr_content/root/responsivegrid/media_slider/media_slider_item/image.component.damq6.3426579305725.jpg/mercedes-benz-g-class-n465-highlights-exterior-856x480-03-2024.jpg",
     id: "4",
   },
   {
