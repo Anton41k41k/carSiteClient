@@ -1,6 +1,11 @@
 import { Box, Paper, Typography } from "@mui/material";
+import PropTypes from "prop-types";
 
-export default function MainImgSection() {
+MainImgSection.propTypes = {
+  setImageLoaded: PropTypes.func,
+};
+
+export default function MainImgSection({ setImageLoaded }) {
   return (
     <Paper elevation={2}>
       <Box
@@ -16,7 +21,7 @@ export default function MainImgSection() {
       >
         <img
           rel="preload"
-          loading="eager"
+          onLoad={() => setImageLoaded(true)}
           style={{ maxWidth: "100vw", width: "100%", height: "auto" }}
           src={
             "https://bmw.scene7.com/is/image/BMW/banner_new?wid=1920&amp;hei=1080"
