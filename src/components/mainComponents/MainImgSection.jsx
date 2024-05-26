@@ -15,6 +15,7 @@ export default function MainImgSection() {
         }}
       >
         <img
+          rel="preload"
           loading="eager"
           style={{ maxWidth: "100vw", width: "100%", height: "auto" }}
           src={
