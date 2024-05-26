@@ -1,16 +1,22 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Presentation from "./components/carPageComponents/Presentation";
-import Design from "./components/carPageComponents/Desing";
+const Design = lazy(() => import("./components/carPageComponents/Desing"));
 import { CircularProgress } from "@mui/material";
-import Features from "./components/carPageComponents/Features";
-import Characteristics from "./components/carPageComponents/Characteristics";
-import OrderPopup from "./components/carPageComponents/OrderPopup";
+const Features = lazy(() => import("./components/carPageComponents/Features"));
+const Characteristics = lazy(() =>
+  import("./components/carPageComponents/Characteristics")
+);
+const OrderPopup = lazy(() =>
+  import("./components/carPageComponents/OrderPopup")
+);
+const Overview = lazy(() => import("./components/carPageComponents/Overview"));
 
 export default function CarPage() {
   const { carId } = useParams();
   const [information, setInformation] = useState();
+  const [imageLoaded, setImageLoaded] = useState(false);
   useEffect(() => {
     fetch(
       `https://66454468b8925626f8916e2a.mockapi.io/db/mainPage/makes/${carId}`,
@@ -34,27 +40,42 @@ export default function CarPage() {
         <Presentation
           backdrop_path={information.backdrop_path}
           model={information.model}
-          overview={information.overview}
           make={information.make}
           year={information.year}
           total={information.total}
+          setImageLoaded={setImageLoaded}
         />
       ) : (
         <CircularProgress sx={{ mt: "15%" }} />
       )}
-      {information && (
-        <Features features={information.features} model={information.model} />
+      {imageLoaded && (
+        <Suspense>
+          <Overview text={information.overview} />
+        </Suspense>
       )}
-      {information && (
-        <Characteristics characteristics={information.characteristics} />
+      {imageLoaded && (
+        <Suspense>
+          <Features features={information.features} model={information.model} />
+        </Suspense>
       )}
-      {information && <Design design={information.design} />}
-      {information && (
-        <OrderPopup
-          make={information.make}
-          model={information.model}
-          total={information.total}
-        />
+      {imageLoaded && (
+        <Suspense>
+          <Characteristics characteristics={information.characteristics} />
+        </Suspense>
+      )}
+      {imageLoaded && (
+        <Suspense>
+          <Design design={information.design} />
+        </Suspense>
+      )}
+      {imageLoaded && (
+        <Suspense>
+          <OrderPopup
+            make={information.make}
+            model={information.model}
+            total={information.total}
+          />
+        </Suspense>
       )}
     </Grid>
   );
