@@ -23,16 +23,20 @@ const topics = [
 
 export default function FeedbackForm() {
   const handlerSubmitForm = async () => {
-    fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
+    await fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(state),
     });
+
+    dispath({
+      type: "resetForm",
+    });
   };
 
-  const initUserReqest = {
+  const initFeedbackForm = {
     gender: "male",
     firstName: "",
     lastName: "",
@@ -100,6 +104,9 @@ export default function FeedbackForm() {
           message: action.message,
         };
       }
+      case "resetForm": {
+        return initFeedbackForm;
+      }
 
       default: {
         throw Error("Unknown action: " + action.type);
@@ -107,7 +114,7 @@ export default function FeedbackForm() {
     }
   }
 
-  const [state, dispath] = useReducer(reducer, initUserReqest);
+  const [state, dispath] = useReducer(reducer, initFeedbackForm);
 
   return (
     <Grid
