@@ -1,13 +1,22 @@
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import "./mainPage.css";
 import MainImgSection from "./components/mainComponents/MainImgSection";
-import MainPageInformaton from "./components/mainComponents/MainPageInformation";
+import { lazy, useState } from "react";
+const MainPageInformaton = lazy(() =>
+  import("./components/mainComponents/MainPageInformation")
+);
 
 export default function MainPage() {
+  const [imageLoaded, setImageLoaded] = useState();
+
   return (
     <Box component={"main"} className="main">
-      <MainImgSection />
-      <MainPageInformaton />
+      <MainImgSection setImageLoaded={setImageLoaded} />
+      {imageLoaded ? (
+        <MainPageInformaton />
+      ) : (
+        <CircularProgress sx={{ mt: "15%" }} />
+      )}
     </Box>
   );
 }
