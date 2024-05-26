@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import { Autoplay, Scrollbar, FreeMode } from "swiper/modules";
+import { Autoplay, Scrollbar } from "swiper/modules";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -26,6 +26,7 @@ export default function MainPageInformaton() {
       >
         <Grid xs={4} sm={8} md={12} lg={16} xl={18}>
           <Swiper
+            loop={true}
             initialSlide={1}
             scrollbar={{
               hide: false,
@@ -44,17 +45,16 @@ export default function MainPageInformaton() {
                 spaceBetween: 20,
               },
               1600: {
-                slidesPerView: 2,
-                spaceBetween: 10,
+                slidesPerView: 3,
+                spaceBetween: 35,
               },
             }}
-            modules={[Autoplay, Scrollbar, FreeMode]}
+            modules={[Autoplay, Scrollbar]}
             centeredSlides={true}
-            freeMode={true}
             spaceBetween={40}
             autoplay={{
               delay: 4000,
-              disableOnInteraction: true,
+              disableOnInteraction: false,
             }}
             style={{
               padding: "1rem 1rem",
@@ -141,7 +141,8 @@ export default function MainPageInformaton() {
           loading="lazy"
           src="https://www.bmw.ru/content/dam/bmw/marketRU/bmw_ru/teaserpool/large/bmw-ix-m60-onepager-sp-desktop_1680x756_V33.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1641460066695.jpg"
           style={{
-            maxWidth: "100%",
+            width: "100%",
+            maxWidth: "100vw",
             zIndex: "-1",
           }}
         />
