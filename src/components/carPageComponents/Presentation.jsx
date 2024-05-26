@@ -6,19 +6,19 @@ import PropTypes from "prop-types";
 Presentation.propTypes = {
   backdrop_path: PropTypes.string,
   model: PropTypes.string,
-  overview: PropTypes.string,
   make: PropTypes.string,
   year: PropTypes.number,
   total: PropTypes.number,
+  setImageLoaded: PropTypes.func,
 };
 
 export default function Presentation({
   backdrop_path,
   model,
-  overview,
   make,
   year,
   total,
+  setImageLoaded,
 }) {
   return (
     <Grid component={Paper} elevation={0}>
@@ -41,9 +41,18 @@ export default function Presentation({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            maxWidth: "100vw",
+            width: "100%",
+            heidth: "auto",
           }}
         >
-          <img style={{ maxWidth: "100%" }} src={backdrop_path} alt="model" />
+          <img
+            style={{ width: "100%", height: "auto" }}
+            src={backdrop_path}
+            alt="model"
+            rel="preload"
+            onLoad={() => setImageLoaded(true)}
+          />
           <Box
             sx={{
               position: "absolute",
@@ -104,28 +113,6 @@ export default function Presentation({
             </Typography>
           </Box>
         </Box>
-      </Box>
-      <Box
-        component={Typography}
-        fontWeight="300"
-        lineHeight="1.5rem"
-        variant="body1"
-        paragraph={true}
-        mb={1}
-        sx={{
-          width: "100%",
-          textAlign: "justify",
-          color: "#262626",
-          padding: { xs: "2rem", md: "4rem" },
-          fontSize: {
-            xs: "1rem",
-            sm: "0.8rem",
-            md: "1.1rem",
-            lg: "1.3rem",
-          },
-        }}
-      >
-        {overview}
       </Box>
     </Grid>
   );
