@@ -91,7 +91,7 @@ export default function MainPageInformaton() {
                       fontWeight="500"
                       sx={{
                         fontSize: {
-                          xs: "1rem",
+                          xs: "0.9rem",
                           sm: "1rem",
                           md: "1.1rem",
                           lg: "1.3rem",
@@ -108,7 +108,7 @@ export default function MainPageInformaton() {
                       pt={1}
                       sx={{
                         fontSize: {
-                          xs: "0.9rem",
+                          xs: "0.8rem",
                           sm: "1rem",
                           md: "1.1rem",
                           lg: "1.2rem",
@@ -133,7 +133,6 @@ export default function MainPageInformaton() {
       >
         <img
           src="https://www.bmw.ru/content/dam/bmw/marketRU/bmw_ru/teaserpool/large/bmw-ix-m60-onepager-sp-desktop_1680x756_V33.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1641460066695.jpg"
-          loading="lazy"
           style={{
             maxWidth: "100%",
             zIndex: "-1",
@@ -145,7 +144,7 @@ export default function MainPageInformaton() {
             fontSize: {
               xs: "0.8rem",
               sm: "1.4rem",
-              md: "2rem",
+              md: "1.8rem",
               lg: "2rem",
             },
             position: "absolute",
@@ -172,9 +171,10 @@ export default function MainPageInformaton() {
               fontSize: {
                 xs: "0.8rem",
                 sm: "1.4rem",
-                md: "2rem",
+                md: "1.6rem",
                 lg: "2rem",
               },
+              display: { xs: "none", sm: "block" },
             }}
             variant="h4"
           >
