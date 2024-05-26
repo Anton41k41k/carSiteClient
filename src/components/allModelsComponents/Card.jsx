@@ -34,11 +34,18 @@ export default function CardCar({ carData }) {
       lg={3.5}
       xl={4}
       m={"1rem"}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
       <CardMedia
         component="img"
         image={carData.poster_path}
         title={carData.model}
+        sx={{
+          marginTop: "auto",
+        }}
       />
       <CardContent>
         <Typography
