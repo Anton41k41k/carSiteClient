@@ -15,9 +15,10 @@ export default function MainImgSection() {
         }}
       >
         <img
-          style={{ maxWidth: "100%" }}
+          loading="eager"
+          style={{ maxWidth: "100vw", width: "100%", height: "auto" }}
           src={
-            "https://bmw.scene7.com/is/image/BMW/banner_new?wid=1920&amp;hei=1080"
+            "https://bmw.scene7.com/is/image/BMW/banner_new?wid=1280&amp;hei=1024"
           }
           alt=""
         />
@@ -30,7 +31,7 @@ export default function MainImgSection() {
             color: "white",
             padding: { xs: "0 2rem", md: "0 6rem" },
             top: { md: "15%", lg: "12%", xl: "12%" },
-            bottom: { xs: "8%", sm: "8%" },
+            bottom: { xs: "4%", sm: "8%" },
           }}
         >
           <Typography
