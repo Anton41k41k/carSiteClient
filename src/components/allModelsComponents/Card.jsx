@@ -43,6 +43,7 @@ export default function CardCar({ carData }) {
         component="img"
         image={carData.poster_path}
         title={carData.model}
+        rel="preload"
         sx={{
           marginTop: "auto",
         }}
