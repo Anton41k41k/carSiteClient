@@ -18,7 +18,7 @@ export default function MainImgSection() {
           loading="eager"
           style={{ maxWidth: "100vw", width: "100%", height: "auto" }}
           src={
-            "https://bmw.scene7.com/is/image/BMW/banner_new?wid=1280&amp;hei=1024"
+            "https://bmw.scene7.com/is/image/BMW/banner_new?wid=1920&amp;hei=1080"
           }
           alt=""
         />
