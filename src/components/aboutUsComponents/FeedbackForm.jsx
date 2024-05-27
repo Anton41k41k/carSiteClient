@@ -23,15 +23,15 @@ const topics = [
 
 export default function FeedbackForm() {
   const handlerSubmitForm = async () => {
-    await fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
+    fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(state),
-    });
+    }).catch((e) => alert(`Ошибка отправки сообщения: ` + e.message));
 
-    dispath({
+    dispatch({
       type: "resetForm",
     });
   };
@@ -114,7 +114,7 @@ export default function FeedbackForm() {
     }
   }
 
-  const [state, dispath] = useReducer(reducer, initFeedbackForm);
+  const [state, dispatch] = useReducer(reducer, initFeedbackForm);
 
   return (
     <Grid
@@ -145,7 +145,7 @@ export default function FeedbackForm() {
             row
             sx={{ ":focus": { color: "#262626" } }}
             onChange={(e) => {
-              dispath({
+              dispatch({
                 type: "changeGender",
                 gender: e.target.value,
               });
@@ -167,7 +167,7 @@ export default function FeedbackForm() {
           value={state.firstName}
           type="text"
           handleChange={(e) => {
-            dispath({
+            dispatch({
               type: "changeFirstName",
               firstName: e.target.value,
             });
@@ -181,7 +181,7 @@ export default function FeedbackForm() {
           value={state.lastName}
           type="text"
           handleChange={(e) => {
-            dispath({
+            dispatch({
               type: "changeLastName",
               lastName: e.target.value,
             });
@@ -194,7 +194,7 @@ export default function FeedbackForm() {
           value={state.surname}
           type="text"
           handleChange={(e) => {
-            dispath({
+            dispatch({
               type: "changeSurname",
               surname: e.target.value,
             });
@@ -207,7 +207,7 @@ export default function FeedbackForm() {
           value={state.email}
           type="mail"
           handleChange={(e) => {
-            dispath({
+            dispatch({
               type: "changeEmail",
               email: e.target.value,
             });
@@ -220,7 +220,7 @@ export default function FeedbackForm() {
           value={state.number}
           type="tel"
           handleChange={(e) => {
-            dispath({
+            dispatch({
               type: "changeNumber",
               number: e.target.value,
             });
@@ -233,7 +233,7 @@ export default function FeedbackForm() {
           value={state.VIN}
           type="text"
           handleChange={(e) => {
-            dispath({
+            dispatch({
               type: "changeVIN",
               VIN: e.target.value,
             });
@@ -265,7 +265,7 @@ export default function FeedbackForm() {
           <Select
             required
             onChange={(e) => {
-              dispath({
+              dispatch({
                 type: "changeTopic",
                 topic: e.target.value,
               });
@@ -294,7 +294,7 @@ export default function FeedbackForm() {
             name="message"
             value={state.message}
             onChange={(e) => {
-              dispath({
+              dispatch({
                 type: "changeMessage",
                 message: e.target.value,
               });
