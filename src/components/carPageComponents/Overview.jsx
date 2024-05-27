@@ -12,7 +12,7 @@ export default function Overview({ text }) {
       <Box
         component={Typography}
         fontWeight="300"
-        lineHeight="1.5rem"
+        lineHeight={{ xs: "1.5rem", lg: "2.2rem", xl: "2.7rem" }}
         variant="body1"
         paragraph={true}
         mb={1}
@@ -26,6 +26,7 @@ export default function Overview({ text }) {
             sm: "0.8rem",
             md: "1.1rem",
             lg: "1.3rem",
+            xl: "1.7rem",
           },
         }}
       >

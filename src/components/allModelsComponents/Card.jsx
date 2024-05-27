@@ -58,7 +58,7 @@ export default function CardCar({ carData }) {
               sm: "1.1rem",
               md: "1.2rem",
               lg: "1.2rem",
-              xl: "1.3rem",
+              xl: "1.5rem",
             },
           }}
         >

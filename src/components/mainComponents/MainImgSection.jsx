@@ -51,6 +51,7 @@ export default function MainImgSection({ setImageLoaded }) {
                 sm: "0.8rem",
                 md: "1.1rem",
                 lg: "1.3rem",
+                xl: "1.6rem",
               },
             }}
           >
@@ -63,6 +64,7 @@ export default function MainImgSection({ setImageLoaded }) {
                 sm: "1.4rem",
                 md: "1.6rem",
                 lg: "1.8rem",
+                xl: "2rem",
               },
             }}
             fontWeight="400"

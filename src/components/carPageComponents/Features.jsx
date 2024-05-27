@@ -114,7 +114,7 @@ export default function Features({ features, model }) {
                         sm: "1rem",
                         md: "1.1rem",
                         lg: "1.3rem",
-                        xl: "1.5rem",
+                        xl: "1.7rem",
                       },
 
                       color: "#262626",

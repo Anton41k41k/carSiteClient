@@ -75,7 +75,7 @@ export default function Presentation({
                   sm: "1.3rem",
                   md: "1.5rem",
                   lg: "1.6rem",
-                  xl: "1.6rem",
+                  xl: "3.2rem",
                 },
               }}
             >
@@ -88,7 +88,7 @@ export default function Presentation({
                   sm: "1.8rem",
                   md: "2.5rem",
                   lg: "3rem",
-                  xl: "3rem",
+                  xl: "4rem",
                 },
               }}
               fontWeight="400"
@@ -103,7 +103,7 @@ export default function Presentation({
                   sm: "1rem",
                   md: "1.2rem",
                   lg: "1.3rem",
-                  xl: "1.3rem",
+                  xl: "2.3rem",
                 },
               }}
               fontWeight="400"
