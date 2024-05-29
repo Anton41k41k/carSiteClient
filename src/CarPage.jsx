@@ -3,7 +3,8 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Presentation from "./components/carPageComponents/Presentation";
 const Design = lazy(() => import("./components/carPageComponents/Desing"));
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, useMediaQuery } from "@mui/material";
+import { useTheme } from "@emotion/react";
 const Features = lazy(() => import("./components/carPageComponents/Features"));
 const Characteristics = lazy(() =>
   import("./components/carPageComponents/Characteristics")
@@ -17,6 +18,8 @@ export default function CarPage() {
   const { carId } = useParams();
   const [information, setInformation] = useState();
   const [imageLoaded, setImageLoaded] = useState(false);
+  const theme = useTheme();
+  const isPhone = useMediaQuery(theme.breakpoints.down("md"));
   useEffect(() => {
     fetch(
       `https://66454468b8925626f8916e2a.mockapi.io/db/mainPage/makes/${carId}`,
@@ -55,7 +58,11 @@ export default function CarPage() {
       )}
       {imageLoaded && (
         <Suspense>
-          <Features features={information.features} model={information.model} />
+          <Features
+            features={information.features}
+            model={information.model}
+            isPhone={isPhone}
+          />
         </Suspense>
       )}
       {imageLoaded && (
@@ -65,7 +72,7 @@ export default function CarPage() {
       )}
       {imageLoaded && (
         <Suspense>
-          <Design design={information.design} />
+          <Design design={information.design} isPhone={isPhone} />
         </Suspense>
       )}
       {imageLoaded && (
