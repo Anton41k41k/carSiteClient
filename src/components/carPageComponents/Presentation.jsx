@@ -21,7 +21,7 @@ export default function Presentation({
   setImageLoaded,
 }) {
   return (
-    <Grid component={Paper} elevation={0}>
+    <Grid component={Paper} elevation={0} sx={{ width: "100%" }}>
       <Box
         component={"section"}
         sx={{
