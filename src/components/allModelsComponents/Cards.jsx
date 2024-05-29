@@ -14,13 +14,13 @@ export default function Cards({ initCards, filterParams }) {
       justifyContent="center"
       sx={{ width: "100%" }}
     >
-      {initCards &&
-        !filterParams &&
-        initCards.map((card) => <CardCar key={card.id} carData={card} />)}
-      {filterParams &&
-        initCards
-          .filter((card) => card.make === filterParams)
-          .map((card) => <CardCar key={card.id} carData={card} />)}
+      {initCards
+        .filter((card) =>
+          filterParams === "" ? card : card.make === filterParams
+        )
+        .map((card) => (
+          <CardCar key={card.id} carData={card} />
+        ))}
     </Grid>
   );
 }
