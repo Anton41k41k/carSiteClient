@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import {
   Button,
+  Checkbox,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -10,6 +11,7 @@ import {
   RadioGroup,
   Select,
   TextField,
+  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import FormInput from "../FormInput";
@@ -309,6 +311,25 @@ export default function FeedbackForm() {
               },
             }}
           />
+        </Grid>
+        <Grid
+          xs={4}
+          sm={8}
+          md={12}
+          lg={16}
+          xl={18}
+          mb={1}
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Checkbox required />
+          <Typography variant="subtitle2" sx={{ fontWeight: "300" }}>
+            Даю согласие на обработку персональных данных
+          </Typography>
         </Grid>
         <Grid xl={3}>
           <Button

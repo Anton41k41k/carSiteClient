@@ -9,7 +9,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { useState } from "react";
 
 import PropTypes from "prop-types";
-import { Typography } from "@mui/material";
+import { Box, Checkbox, Typography } from "@mui/material";
 
 OrderPopup.propTypes = {
   make: PropTypes.string,
@@ -131,6 +131,27 @@ export default function OrderPopup({ make, model, total }) {
             type="tel"
             variant="standard"
           />
+          <Box
+            width="100%"
+            my={1}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Checkbox required size="small" />
+            <Typography
+              variant="subtitle2"
+              sx={{
+                color: "#666666",
+                fontWeight: "300",
+              }}
+            >
+              Даю согласие на обработку персональных данных
+            </Typography>
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Назад</Button>
