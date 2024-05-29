@@ -1,11 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
-import { Autoplay, Scrollbar } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/free-mode";
+import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import { newItems } from "../../DATA/newItems";
 
@@ -27,10 +26,7 @@ export default function MainPageInformaton() {
         <Grid xs={4} sm={8} md={12} lg={16} xl={18}>
           <Swiper
             loop={true}
-            initialSlide={1}
-            scrollbar={{
-              hide: false,
-            }}
+            initialSlide={0}
             breakpoints={{
               640: {
                 slidesPerView: 1,
@@ -49,7 +45,8 @@ export default function MainPageInformaton() {
                 spaceBetween: 35,
               },
             }}
-            modules={[Autoplay, Scrollbar]}
+            pagination={true}
+            modules={[Autoplay, Pagination]}
             centeredSlides={true}
             spaceBetween={40}
             autoplay={{

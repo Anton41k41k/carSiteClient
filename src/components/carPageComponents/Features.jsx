@@ -1,10 +1,9 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { Autoplay, Scrollbar } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/free-mode";
+import "swiper/css/pagination";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 
 import PropTypes from "prop-types";
@@ -27,6 +26,7 @@ export default function Features({ features, model }) {
         alignItems="center"
         display={{ xs: "flex", md: "none" }}
         flexDirection="column"
+        mb={2}
       >
         <Typography
           sx={{
@@ -46,30 +46,28 @@ export default function Features({ features, model }) {
           ОСОБЕННОСТИ {model}
         </Typography>
         <Swiper
+          pagination={true}
           loop={true}
-          initialSlide={1}
-          scrollbar={{
-            hide: false,
-          }}
+          initialSlide={0}
           breakpoints={{
             640: {
               slidesPerView: 1,
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 20,
             },
             1110: {
-              slidesPerView: 3,
+              slidesPerView: 0,
               spaceBetween: 20,
             },
             1600: {
-              slidesPerView: 2,
+              slidesPerView: 0,
               spaceBetween: 10,
             },
           }}
-          modules={[Autoplay, Scrollbar]}
+          modules={[Autoplay, Pagination]}
           centeredSlides={true}
           spaceBetween={40}
           autoplay={{
