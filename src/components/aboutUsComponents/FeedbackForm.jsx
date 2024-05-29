@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useState } from "react";
 import {
   Button,
   Checkbox,
@@ -24,21 +24,7 @@ const topics = [
 ];
 
 export default function FeedbackForm() {
-  const handlerSubmitForm = async () => {
-    fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(state),
-    }).catch((e) => alert(`Ошибка отправки сообщения: ` + e.message));
-
-    dispatch({
-      type: "resetForm",
-    });
-  };
-
-  const initFeedbackForm = {
+  const [feedbackData, setFeedbackData] = useState({
     gender: "male",
     firstName: "",
     lastName: "",
@@ -48,75 +34,28 @@ export default function FeedbackForm() {
     VIN: "",
     topic: "",
     message: "",
+  });
+  const handlerSubmitForm = async () => {
+    fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(feedbackData),
+    }).catch((e) => alert(`Ошибка отправки сообщения: ` + e.message));
+
+    setFeedbackData({
+      gender: "male",
+      firstName: "",
+      lastName: "",
+      surname: "",
+      email: "",
+      number: "",
+      VIN: "",
+      topic: "",
+      message: "",
+    });
   };
-
-  function reducer(state, action) {
-    switch (action.type) {
-      case "changeGender": {
-        return {
-          ...state,
-          gender: action.gender,
-        };
-      }
-      case "changeFirstName": {
-        return {
-          ...state,
-          firstName: action.firstName,
-        };
-      }
-      case "changeLastName": {
-        return {
-          ...state,
-          lastName: action.lastName,
-        };
-      }
-      case "changeSurname": {
-        return {
-          ...state,
-          surname: action.surname,
-        };
-      }
-      case "changeEmail": {
-        return {
-          ...state,
-          email: action.email,
-        };
-      }
-      case "changeNumber": {
-        return {
-          ...state,
-          number: action.number,
-        };
-      }
-      case "changeVIN": {
-        return {
-          ...state,
-          VIN: action.VIN,
-        };
-      }
-      case "changeTopic": {
-        return {
-          ...state,
-          topic: action.topic,
-        };
-      }
-      case "changeMessage": {
-        return {
-          ...state,
-          message: action.message,
-        };
-      }
-      case "resetForm": {
-        return initFeedbackForm;
-      }
-
-      default: {
-        throw Error("Unknown action: " + action.type);
-      }
-    }
-  }
-
-  const [state, dispatch] = useReducer(reducer, initFeedbackForm);
 
   return (
     <Grid
@@ -143,12 +82,12 @@ export default function FeedbackForm() {
         <Grid mb={1} xs={4} sm={8} md={12} lg={16} xl={18}>
           <FormLabel>Обращение</FormLabel>
           <RadioGroup
-            value={state.gender}
+            value={feedbackData.gender}
             row
             sx={{ ":focus": { color: "#262626" } }}
             onChange={(e) => {
-              dispatch({
-                type: "changeGender",
+              setFeedbackData({
+                ...feedbackData,
                 gender: e.target.value,
               });
             }}
@@ -166,11 +105,11 @@ export default function FeedbackForm() {
           </RadioGroup>
         </Grid>
         <FormInput
-          value={state.firstName}
+          value={feedbackData.firstName}
           type="text"
           handleChange={(e) => {
-            dispatch({
-              type: "changeFirstName",
+            setFeedbackData({
+              ...feedbackData,
               firstName: e.target.value,
             });
           }}
@@ -180,11 +119,11 @@ export default function FeedbackForm() {
         />
 
         <FormInput
-          value={state.lastName}
+          value={feedbackData.lastName}
           type="text"
           handleChange={(e) => {
-            dispatch({
-              type: "changeLastName",
+            setFeedbackData({
+              ...feedbackData,
               lastName: e.target.value,
             });
           }}
@@ -193,11 +132,11 @@ export default function FeedbackForm() {
           required={true}
         />
         <FormInput
-          value={state.surname}
+          value={feedbackData.surname}
           type="text"
           handleChange={(e) => {
-            dispatch({
-              type: "changeSurname",
+            setFeedbackData({
+              ...feedbackData,
               surname: e.target.value,
             });
           }}
@@ -206,11 +145,11 @@ export default function FeedbackForm() {
           required={false}
         />
         <FormInput
-          value={state.email}
+          value={feedbackData.email}
           type="mail"
           handleChange={(e) => {
-            dispatch({
-              type: "changeEmail",
+            setFeedbackData({
+              ...feedbackData,
               email: e.target.value,
             });
           }}
@@ -219,11 +158,11 @@ export default function FeedbackForm() {
           required={true}
         />
         <FormInput
-          value={state.number}
+          value={feedbackData.number}
           type="tel"
           handleChange={(e) => {
-            dispatch({
-              type: "changeNumber",
+            setFeedbackData({
+              ...feedbackData,
               number: e.target.value,
             });
           }}
@@ -232,11 +171,11 @@ export default function FeedbackForm() {
           required={true}
         />
         <FormInput
-          value={state.VIN}
+          value={feedbackData.VIN}
           type="text"
           handleChange={(e) => {
-            dispatch({
-              type: "changeVIN",
+            setFeedbackData({
+              ...feedbackData,
               VIN: e.target.value,
             });
           }}
@@ -267,15 +206,15 @@ export default function FeedbackForm() {
           <Select
             required
             onChange={(e) => {
-              dispatch({
-                type: "changeTopic",
+              setFeedbackData({
+                ...feedbackData,
                 topic: e.target.value,
               });
             }}
             fullWidth
             label="Тема обращения"
             labelId="selectId"
-            value={state.topic}
+            value={feedbackData.topic}
             sx={{
               MozAppearance: "none",
             }}
@@ -294,10 +233,10 @@ export default function FeedbackForm() {
             multiline
             label={"Текст письма"}
             name="message"
-            value={state.message}
+            value={feedbackData.message}
             onChange={(e) => {
-              dispatch({
-                type: "changeMessage",
+              setFeedbackData({
+                ...feedbackData,
                 message: e.target.value,
               });
             }}
