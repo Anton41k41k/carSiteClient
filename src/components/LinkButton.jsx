@@ -13,10 +13,10 @@ function LinkButtonHeader({ to, text, pathname }) {
         display: "block",
         borderRadius: "0",
         color: `${pathname === "/" ? "white" : "#666666"}`,
-        borderBottom: "0px solid blue",
+        borderBottom: "0px solid #8ED2FF",
         ":hover": {
           color: `${pathname === "/" ? "white" : "#262626"}`,
-          borderBottom: "4px solid blue",
+          borderBottom: "4px solid #8ED2FF",
           borderRadius: "0%",
           mb: 0,
           backgroundColor: "unset",
