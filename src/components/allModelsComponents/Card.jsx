@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 CardCar.propTypes = {
   carData: PropTypes.shape({
     poster_path: PropTypes.string,
@@ -24,6 +25,7 @@ CardCar.propTypes = {
 };
 
 export default function CardCar({ carData }) {
+  const [imgLoaded, setImgLoaded] = useState(false);
   return (
     <Grid
       component={Card}
@@ -34,8 +36,8 @@ export default function CardCar({ carData }) {
       lg={3.5}
       xl={4}
       m={"1rem"}
+      display={imgLoaded ? "flex" : "none"}
       sx={{
-        display: "flex",
         flexDirection: "column",
       }}
     >
@@ -44,6 +46,7 @@ export default function CardCar({ carData }) {
         image={carData.poster_path}
         title={carData.model}
         rel="preload"
+        onLoad={() => setImgLoaded(true)}
         sx={{
           marginTop: "auto",
         }}
