@@ -10,6 +10,7 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 import { Box, Checkbox, Typography } from "@mui/material";
+import RequestStatus from "../RequestStatus";
 
 OrderPopup.propTypes = {
   make: PropTypes.string,
@@ -19,23 +20,40 @@ OrderPopup.propTypes = {
 
 export default function OrderPopup({ make, model, total }) {
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState("");
 
   function handleOpen() {
     setOpen(true);
   }
 
   function handleClose() {
+    setStatus("");
     setOpen(false);
   }
 
   const handlerSendOrder = async (data) => {
+    setStatus("pending");
     fetch(`${import.meta.env.VITE_BASE_URL}/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: data,
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          setStatus("fulfilled");
+          setTimeout(() => {
+            handleClose();
+          }, 4000);
+        } else {
+          throw new Error("Ошибка отправки запроса");
+        }
+      })
+      .catch((e) => {
+        console.error(`Ошибка отправки сообщения: ` + e.message);
+        setStatus("rejected");
+      });
   };
 
   return (
@@ -82,12 +100,11 @@ export default function OrderPopup({ make, model, total }) {
             formJson.make = make;
             formJson.model = model;
             handlerSendOrder(JSON.stringify(formJson));
-            handleClose();
           },
         }}
       >
         <DialogTitle>Заказ автомобиля</DialogTitle>
-        <DialogContent>
+        <DialogContent sx={{ justifyContent: "flex-start", px: "auto", py: 0 }}>
           <DialogContentText>
             Оставьте заявку на заказ автомобиля, наш оператор свяжется с вами
             для соглосования. Цена на данный автомобиль от:{" "}
@@ -133,15 +150,16 @@ export default function OrderPopup({ make, model, total }) {
           />
           <Box
             width="100%"
-            my={1}
+            my={2}
             sx={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "flex-start",
+              gap: 2,
             }}
           >
-            <Checkbox required size="small" />
+            <Checkbox required size="small" sx={{ padding: 0 }} />
             <Typography
               variant="subtitle2"
               sx={{
@@ -151,6 +169,18 @@ export default function OrderPopup({ make, model, total }) {
             >
               Даю согласие на обработку персональных данных
             </Typography>
+          </Box>
+          <Box
+            width="100%"
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              height: "3rem",
+            }}
+          >
+            <RequestStatus status={status} />
           </Box>
         </DialogContent>
         <DialogActions>

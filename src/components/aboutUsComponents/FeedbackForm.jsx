@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import FormInput from "../FormInput";
+import RequestStatus from "../RequestStatus";
 
 const topics = [
   { id: 0, text: "Автомобили" },
@@ -24,6 +25,7 @@ const topics = [
 ];
 
 export default function FeedbackForm() {
+  const [status, setStatus] = useState("");
   const [feedbackData, setFeedbackData] = useState({
     gender: "male",
     firstName: "",
@@ -36,25 +38,39 @@ export default function FeedbackForm() {
     message: "",
   });
   const handlerSubmitForm = async () => {
+    setStatus("pending");
     fetch(`${import.meta.env.VITE_BASE_URL}/feedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(feedbackData),
-    }).catch((e) => alert(`Ошибка отправки сообщения: ` + e.message));
-
-    setFeedbackData({
-      gender: "male",
-      firstName: "",
-      lastName: "",
-      surname: "",
-      email: "",
-      number: "",
-      VIN: "",
-      topic: "",
-      message: "",
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          setStatus("fulfilled");
+          setFeedbackData({
+            gender: "male",
+            firstName: "",
+            lastName: "",
+            surname: "",
+            email: "",
+            number: "",
+            VIN: "",
+            topic: "",
+            message: "",
+          });
+          setTimeout(() => {
+            setStatus("");
+          }, 4000);
+        } else {
+          throw new Error("Ошибка отправки запроса");
+        }
+      })
+      .catch((e) => {
+        console.error(`Ошибка отправки сообщения: ` + e.message);
+        setStatus("rejected");
+      });
   };
 
   return (
@@ -270,15 +286,30 @@ export default function FeedbackForm() {
             Даю согласие на обработку персональных данных
           </Typography>
         </Grid>
-        <Grid xl={3}>
+        <Grid
+          xs={4}
+          sm={8}
+          md={12}
+          lg={16}
+          xl={18}
+          mb={1}
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 3,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
           <Button
             type="submit"
             variant="contained"
-            size="large"
+            size="medium"
             id="FeedbackFormSubmit"
           >
             Отправить
           </Button>
+          <RequestStatus status={status} />
         </Grid>
       </Grid>
     </Grid>
