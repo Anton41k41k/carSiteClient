@@ -40,14 +40,7 @@ export default function CarPage() {
       justifyContent="center"
     >
       {information ? (
-        <Presentation
-          backdrop_path={information.backdrop_path}
-          model={information.model}
-          make={information.make}
-          year={information.year}
-          total={information.total}
-          setImageLoaded={setImageLoaded}
-        />
+        <Presentation {...information} setImageLoaded={setImageLoaded} />
       ) : (
         <CircularProgress sx={{ mt: "15%" }} />
       )}
@@ -58,11 +51,7 @@ export default function CarPage() {
       )}
       {imageLoaded && (
         <Suspense>
-          <Features
-            features={information.features}
-            model={information.model}
-            isPhone={isPhone}
-          />
+          <Features {...information} isPhone={isPhone} />
         </Suspense>
       )}
       {imageLoaded && (
@@ -77,11 +66,7 @@ export default function CarPage() {
       )}
       {imageLoaded && (
         <Suspense>
-          <OrderPopup
-            make={information.make}
-            model={information.model}
-            total={information.total}
-          />
+          <OrderPopup {...information} />
         </Suspense>
       )}
     </Grid>
