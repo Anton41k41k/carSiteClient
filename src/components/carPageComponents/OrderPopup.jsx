@@ -45,7 +45,7 @@ export default function OrderPopup({ make, model, total }) {
           setStatus("fulfilled");
           setTimeout(() => {
             handleClose();
-          }, 4000);
+          }, 3000);
         } else {
           throw new Error("Ошибка отправки запроса");
         }
@@ -119,6 +119,7 @@ export default function OrderPopup({ make, model, total }) {
             type="text"
             fullWidth
             variant="standard"
+            disabled={status === "pending" ? true : false}
           />
           <TextField
             autoFocus
@@ -129,6 +130,7 @@ export default function OrderPopup({ make, model, total }) {
             type="text"
             fullWidth
             variant="standard"
+            disabled={status === "pending" ? true : false}
           />
           <TextField
             autoFocus
@@ -139,6 +141,7 @@ export default function OrderPopup({ make, model, total }) {
             label="Email Address"
             type="email"
             variant="standard"
+            disabled={status === "pending" ? true : false}
           />
           <TextField
             required
@@ -147,6 +150,7 @@ export default function OrderPopup({ make, model, total }) {
             label="Номер телефона"
             type="tel"
             variant="standard"
+            disabled={status === "pending" ? true : false}
           />
           <Box
             width="100%"
@@ -158,8 +162,14 @@ export default function OrderPopup({ make, model, total }) {
               justifyContent: "flex-start",
               gap: 2,
             }}
+            disabled={status === "pending" ? true : false}
           >
-            <Checkbox required size="small" sx={{ padding: 0 }} />
+            <Checkbox
+              required
+              size="small"
+              sx={{ padding: 0 }}
+              disabled={status === "pending" ? true : false}
+            />
             <Typography
               variant="subtitle2"
               sx={{
@@ -185,7 +195,14 @@ export default function OrderPopup({ make, model, total }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Назад</Button>
-          <Button type="submit">Отправить заявку</Button>
+          <Button
+            type="submit"
+            disabled={
+              status === "pending" || status === "fulfilled" ? true : false
+            }
+          >
+            Отправить заявку
+          </Button>
         </DialogActions>
       </Dialog>
     </Grid>

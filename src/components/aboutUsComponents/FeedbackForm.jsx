@@ -112,11 +112,13 @@ export default function FeedbackForm() {
               value="male"
               control={<Radio size="medium" />}
               label="Уважаемый"
+              disabled={status === "pending" ? true : false}
             />
             <FormControlLabel
               value="female"
               control={<Radio size="medium" />}
               label="Уважаемая"
+              disabled={status === "pending" ? true : false}
             />
           </RadioGroup>
         </Grid>
@@ -132,6 +134,7 @@ export default function FeedbackForm() {
           name="firstName"
           label="Имя"
           required={true}
+          disabled={status === "pending" ? true : false}
         />
 
         <FormInput
@@ -146,6 +149,7 @@ export default function FeedbackForm() {
           name="lastName"
           label="Фамилия"
           required={true}
+          disabled={status === "pending" ? true : false}
         />
         <FormInput
           value={feedbackData.surname}
@@ -159,10 +163,11 @@ export default function FeedbackForm() {
           name="surname"
           label="Отчество"
           required={false}
+          disabled={status === "pending" ? true : false}
         />
         <FormInput
           value={feedbackData.email}
-          type="mail"
+          type="email"
           handleChange={(e) => {
             setFeedbackData({
               ...feedbackData,
@@ -172,6 +177,7 @@ export default function FeedbackForm() {
           name="email"
           label="Email"
           required={true}
+          disabled={status === "pending" ? true : false}
         />
         <FormInput
           value={feedbackData.number}
@@ -185,6 +191,7 @@ export default function FeedbackForm() {
           name="number"
           label="Номер телефона"
           required={true}
+          disabled={status === "pending" ? true : false}
         />
         <FormInput
           value={feedbackData.VIN}
@@ -198,6 +205,7 @@ export default function FeedbackForm() {
           name="VIN"
           label="VIN автомобиля, последние 7 знаков"
           required={false}
+          disabled={status === "pending" ? true : false}
         />
         <Grid
           required
@@ -208,6 +216,7 @@ export default function FeedbackForm() {
           md={6}
           lg={5.33}
           xl={6}
+          disabled={status === "pending" ? true : false}
         >
           <InputLabel
             id="selectId"
@@ -244,6 +253,7 @@ export default function FeedbackForm() {
         </Grid>
         <Grid xs={4} sm={8} md={12} lg={16} xl={18} mb={1}>
           <TextField
+            disabled={status === "pending" ? true : false}
             required
             minRows={4}
             multiline
@@ -281,7 +291,7 @@ export default function FeedbackForm() {
             justifyContent: "flex-start",
           }}
         >
-          <Checkbox required />
+          <Checkbox required disabled={status === "pending" ? true : false} />
           <Typography variant="subtitle2" sx={{ fontWeight: "300" }}>
             Даю согласие на обработку персональных данных
           </Typography>
@@ -306,6 +316,7 @@ export default function FeedbackForm() {
             variant="contained"
             size="medium"
             id="FeedbackFormSubmit"
+            disabled={status === "pending" ? true : false}
           >
             Отправить
           </Button>

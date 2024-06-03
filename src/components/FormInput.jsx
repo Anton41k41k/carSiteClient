@@ -9,6 +9,7 @@ FormInput.propTypes = {
   required: PropTypes.bool,
   type: PropTypes.string,
   label: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default function FormInput({
@@ -18,6 +19,7 @@ export default function FormInput({
   required,
   type,
   label,
+  disabled,
 }) {
   return (
     <Grid xs={4} sm={8} md={6} lg={5.33} xl={6} mb={1}>
@@ -29,6 +31,7 @@ export default function FormInput({
         type={type}
         value={value}
         onChange={handleChange}
+        disabled={disabled}
       />
     </Grid>
   );
