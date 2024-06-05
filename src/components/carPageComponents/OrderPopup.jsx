@@ -31,7 +31,7 @@ export default function OrderPopup({ make, model, total }) {
     setOpen(false);
   }
 
-  const handlerSendOrder = async (data) => {
+  const handlerSendOrder = (data) => {
     setStatus("pending");
     fetch(`${import.meta.env.VITE_BASE_URL}/order`, {
       method: "POST",
