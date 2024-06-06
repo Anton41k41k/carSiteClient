@@ -40,7 +40,11 @@ export default function CarPage() {
       justifyContent="center"
     >
       {information ? (
-        <Presentation {...information} setImageLoaded={setImageLoaded} />
+        <Presentation
+          {...information}
+          imageLoaded={imageLoaded}
+          setImageLoaded={setImageLoaded}
+        />
       ) : (
         <CircularProgress sx={{ mt: "15%" }} />
       )}
