@@ -10,6 +10,7 @@ Presentation.propTypes = {
   year: PropTypes.number,
   total: PropTypes.number,
   setImageLoaded: PropTypes.func,
+  imageLoaded: PropTypes.bool,
 };
 
 export default function Presentation({
@@ -19,6 +20,7 @@ export default function Presentation({
   year,
   total,
   setImageLoaded,
+  imageLoaded,
 }) {
   return (
     <Grid component={Paper} elevation={0} sx={{ width: "100%" }}>
@@ -53,65 +55,70 @@ export default function Presentation({
             rel="preload"
             onLoad={() => setImageLoaded(true)}
           />
-          <Box
-            sx={{
-              position: "absolute",
-              width: "100%",
-              textAlign: "left",
-              color: "white",
-              padding: { xs: "0 2rem", md: "0 6rem" },
-              top: { md: "25%", lg: "30%", xl: "30%" },
-              bottom: { xs: "10%", sm: "12%" },
-            }}
-          >
-            <Typography
-              fontWeight="300"
-              lineHeight="1rem"
-              variant="p"
-              mb={1}
+          {imageLoaded && (
+            <Box
               sx={{
-                fontSize: {
-                  xs: "1.1rem",
-                  sm: "1.3rem",
-                  md: "1.5rem",
-                  lg: "1.6rem",
-                  xl: "3.2rem",
-                },
+                position: "absolute",
+                width: "100%",
+                textAlign: "left",
+                color: "white",
+                padding: { xs: "0 2rem", md: "0 6rem" },
+                top: { md: "25%", lg: "30%", xl: "30%" },
+                bottom: { xs: "10%", sm: "12%" },
               }}
             >
-              {make}
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: {
-                  xs: "1.3rem",
-                  sm: "1.8rem",
-                  md: "2.5rem",
-                  lg: "3rem",
-                  xl: "4rem",
-                },
-              }}
-              fontWeight="400"
-              variant="h2"
-            >
-              {`${year} ${model}`}
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: {
-                  xs: "1rem",
-                  sm: "1rem",
-                  md: "1.2rem",
-                  lg: "1.3rem",
-                  xl: "2.3rem",
-                },
-              }}
-              fontWeight="400"
-              variant="body1"
-            >
-              {`От ${total.toLocaleString("ru") + "₽"}`}
-            </Typography>
-          </Box>
+              <Typography
+                fontWeight="300"
+                lineHeight="1rem"
+                variant="p"
+                mb={1}
+                sx={{
+                  textShadow: "0 0 0.5em black",
+                  fontSize: {
+                    xs: "1.1rem",
+                    sm: "1.3rem",
+                    md: "1.5rem",
+                    lg: "1.6rem",
+                    xl: "3.2rem",
+                  },
+                }}
+              >
+                {make}
+              </Typography>
+              <Typography
+                sx={{
+                  textShadow: "0 0 0.5em black",
+                  fontSize: {
+                    xs: "1.3rem",
+                    sm: "1.8rem",
+                    md: "2.5rem",
+                    lg: "3rem",
+                    xl: "4rem",
+                  },
+                }}
+                fontWeight="400"
+                variant="h2"
+              >
+                {model} {year}
+              </Typography>
+              <Typography
+                sx={{
+                  textShadow: "0 0 0.5em black",
+                  fontSize: {
+                    xs: "1rem",
+                    sm: "1rem",
+                    md: "1.2rem",
+                    lg: "1.3rem",
+                    xl: "2.3rem",
+                  },
+                }}
+                fontWeight="400"
+                variant="body1"
+              >
+                {`От ${total.toLocaleString("ru") + "₽"}`}
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
     </Grid>
