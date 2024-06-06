@@ -45,7 +45,8 @@ export default function MainPageInformaton() {
                 spaceBetween: 35,
               },
             }}
-            pagination={true}
+            pagination={{ clickable: true }}
+            clica
             modules={[Autoplay, Pagination]}
             centeredSlides={true}
             spaceBetween={40}
@@ -83,6 +84,7 @@ export default function MainPageInformaton() {
                     <img src={item.img} alt={item.title} rel="preload" />
                     <Typography
                       variant="h4"
+                      textAlign="start"
                       className="newItemsInfo_title"
                       mt={1.5}
                       fontWeight="500"
@@ -99,7 +101,7 @@ export default function MainPageInformaton() {
                       {item.title}
                     </Typography>
                     <Typography
-                      variant="p"
+                      variant="body1"
                       className="newItemsInfo_text"
                       textAlign="justify"
                       pt={1}
