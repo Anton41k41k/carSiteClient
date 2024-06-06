@@ -48,7 +48,7 @@ export default function Features({ features, model, isPhone }) {
             ОСОБЕННОСТИ {model}
           </Typography>
           <Swiper
-            pagination={true}
+            pagination={{ clickable: true }}
             loop={true}
             initialSlide={0}
             breakpoints={{
@@ -105,6 +105,7 @@ export default function Features({ features, model, isPhone }) {
                   >
                     <img src={slide.img} alt={slide.title} rel="preload" />
                     <Typography
+                      textAlign="start"
                       variant="h4"
                       mt={1.5}
                       fontWeight="500"
@@ -123,7 +124,7 @@ export default function Features({ features, model, isPhone }) {
                       {slide.title}
                     </Typography>
                     <Typography
-                      variant="p"
+                      variant="body1"
                       textAlign="justify"
                       pt={1}
                       sx={{
@@ -196,6 +197,7 @@ export default function Features({ features, model, isPhone }) {
                 />
                 <CardContent>
                   <Typography
+                    textAlign="start"
                     variant="h4"
                     mt={1.5}
                     fontWeight="500"
@@ -213,7 +215,7 @@ export default function Features({ features, model, isPhone }) {
                     {card.title}
                   </Typography>
                   <Typography
-                    variant="p"
+                    variant="body1"
                     textAlign="justify"
                     pt={1}
                     sx={{

@@ -68,7 +68,7 @@ export default function Desing({ design, isPhone }) {
               },
             }}
             modules={[Autoplay, Pagination]}
-            pagination={true}
+            pagination={{ clickable: true }}
             centeredSlides={true}
             spaceBetween={40}
             autoplay={{
@@ -103,8 +103,9 @@ export default function Desing({ design, isPhone }) {
                       maxWidth: "400px",
                     }}
                   >
-                    <img src={slide.img} alt={slide.title} rel="preload" />
+                    <img src={slide.img} alt={slide.title} loading="lazy" />
                     <Typography
+                      textAlign="start"
                       variant="h4"
                       mt={1.5}
                       fontWeight="500"
@@ -122,7 +123,7 @@ export default function Desing({ design, isPhone }) {
                       {slide.title}
                     </Typography>
                     <Typography
-                      variant="p"
+                      variant="body1"
                       textAlign="justify"
                       pt={1}
                       sx={{
@@ -192,10 +193,11 @@ export default function Desing({ design, isPhone }) {
                   src={card.img}
                   alt={card.title}
                   style={{ width: "100%" }}
-                  rel="preload"
+                  loading="lazy"
                 />
                 <CardContent>
                   <Typography
+                    textAlign="start"
                     variant="h4"
                     mt={1.5}
                     fontWeight="500"
@@ -213,7 +215,7 @@ export default function Desing({ design, isPhone }) {
                     {card.title}
                   </Typography>
                   <Typography
-                    variant="p"
+                    variant="body1"
                     textAlign="justify"
                     pt={1}
                     sx={{
