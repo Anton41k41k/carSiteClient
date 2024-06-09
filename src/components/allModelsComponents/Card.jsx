@@ -48,7 +48,7 @@ export default function CardCar({ carData }) {
         rel="preload"
         onLoad={() => setImgLoaded(true)}
         sx={{
-          marginTop: "auto",
+          margin: "auto auto 0",
         }}
       />
       <CardContent>
