@@ -17,6 +17,7 @@ export default function Overview({ text }) {
         paragraph={true}
         mb={1}
         sx={{
+          textIndent: "1.5rem",
           width: "100%",
           textAlign: "justify",
           color: "#262626",
