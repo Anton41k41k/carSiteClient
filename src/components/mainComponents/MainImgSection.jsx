@@ -46,7 +46,6 @@ export default function MainImgSection({ setImageLoaded }) {
             variant="p"
             mb={1}
             sx={{
-              textShadow: "0 0 0.9em black",
               fontSize: {
                 xs: "1rem",
                 sm: "0.8rem",
@@ -60,7 +59,6 @@ export default function MainImgSection({ setImageLoaded }) {
           </Typography>
           <Typography
             sx={{
-              textShadow: "0 0 0.9em black",
               fontSize: {
                 xs: "1.1rem",
                 sm: "1.4rem",
