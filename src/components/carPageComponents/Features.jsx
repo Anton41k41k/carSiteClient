@@ -186,7 +186,7 @@ export default function Features({ features, model, isPhone }) {
             {features.map((card) => (
               <Card
                 key={card.id}
-                sx={{ maxWidth: 345, margin: "0 1rem" }}
+                sx={{ maxWidth: 345, margin: "0 1rem", width: "100%" }}
                 elevation={0}
               >
                 <img
