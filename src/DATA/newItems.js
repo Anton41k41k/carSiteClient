@@ -1,8 +1,8 @@
 export const newItems = [
   {
     title: "BMW нового класса",
-    text: "С середины этого десятилетия ассортимент продукции BMW Group будет сосредоточен на архитектуре автомобиля, полностью ориентированной на электропривод. Мы представим его в крупносерийном сегменте бренда BMW, в спортивном автомобиле и седане в сегменте 3-й серии.",
-    img: "https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/company/marken-geschaeftsfelder/2560x896_BMW_Group_Neue_Klasse.jpg.grp-transform/small/2560x896_BMW_Group_Neue_Klasse.jpg",
+    text: "С середины этого десятилетия ассортимент продукции BMW Group будет сосредоточен на архитектуре автомобиля, полностью ориентированной на электропривод.",
+    img: "https://avatars.mds.yandex.net/get-vertis-journal/3934100/2020-09-24-be9fe5c57cbc4781bf4234a4b7aab7fe.jpg_1622736693883/orig",
     id: "1",
   },
   {
